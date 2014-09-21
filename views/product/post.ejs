@@ -1,0 +1,53 @@
+
+<div class="product-post-page">
+
+  <h3>Post new product</h3>
+
+  <input type="text" id="name" placeholder="product name" />
+  <input type="text" id="url" placeholder="site url" />
+  <input type="text" id="description" placeholder="short description" />
+
+  <button id="postButton">Post</button>
+
+</div>
+
+<script>
+'use strict';
+
+var onClick = function() {
+
+  var productPostApi = '/product';
+
+  var onPostCompleted = function() {
+    window.location = '/';
+  };
+
+  return function() {
+
+    var name = $('#name').val();
+    var url = $('#url').val();
+
+    if (name && url) {
+
+      var postData = {
+        name: name,
+        url: url,
+        description: $('#description').val()
+      };
+
+      var onPostFailed = function(res) {
+        alert('Error: ' + res.getResponseHeader('error'));
+      };
+
+      $.post(productPostApi, postData, onPostCompleted)
+      .fail(onPostFailed);
+
+    } else {
+      alert('A username and password is required');
+    }
+  };
+
+};
+
+$('#postButton').click(onClick());
+</script>
