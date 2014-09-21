@@ -1,0 +1,17 @@
+<h3><%= listType %></h3>
+
+<ul>
+<%
+for (var i=0; i <products.length; i++) {　%>
+<li>
+<span class="product-name">
+  <a href="<%= products[i].url %>"><%= products[i].name %></a>
+</span>
+<span class="product-description">
+  <%= products[i].description %>
+</span>
+</li>
+<%
+}
+%>
+</ul>

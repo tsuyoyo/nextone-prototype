@@ -36,8 +36,13 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'get /post': {
+  '/product/post': {
     view: 'product/post'
+  },
+
+  '/product/latest': {
+    controller: "ProductController",
+    action: "showDateOrder"
   },
 
   '/auth/login': 'AuthController.login',
